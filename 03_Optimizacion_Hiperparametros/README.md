@@ -1,19 +1,12 @@
+
 # Sprint IA07 — Yarinacocha
 
-Proyecto UNI: Sistema híbrido de aprendizaje automático y optimización combinatoria para la planificación de rutas de recolección de residuos sólidos urbanos.
+## Descripción del trabajo realizado
 
-## Ejecución
-1. Abrir `Sprint_IA07_Hiperparametros_Yarinacocha.ipynb` en Google Colab.
-2. Ejecutar las celdas en orden, incluyendo la instalación de bibliotecas.
-3. Al solicitar el CSV, adjuntar `residuos_yarinacocha_2026(2).csv` (o colocarlo en la misma carpeta).
-4. Esperar a que terminen los trials y consultar `artifacts/`.
-5. Publicar en GitHub Notebook, configuración, logs y gráficos.
+En este sprint desarrollamos la optimización de hiperparámetros de los modelos Random Forest y XGBoost, con el objetivo de mejorar la predicción de la cantidad de residuos sólidos urbanos, expresada en kilogramos por recorrido, en el distrito de Yarinacocha.
 
-## Enfoque
-Predicción de kilogramos por recorrido, Random Forest y XGBoost, RandomSampler y TPESampler de Optuna, validación cronológica 70/15/15 y 3 folds temporales para búsqueda. Objetivo: minimizar MAE; se reportan también RMSE y R².
+Para ello, trabajamos en Google Colab utilizando un conjunto de datos simulado, que dividimos cronológicamente en 70 % para entrenamiento, 15 % para validación y 15 % para prueba. Asimismo, implementamos Optuna con los métodos RandomSampler y TPESampler, estableciendo 15 pruebas por cada combinación de modelo y método, con tres particiones temporales.
 
-## Datos y límites
-El Notebook original describe el dataset como **simulado**. No presentar sus métricas como validación con información operacional real. El archivo incluye fechas hasta diciembre de 2026. La optimización de rutas OR-Tools queda fuera del alcance de este sprint.
+Para evaluar el desempeño predictivo, consideramos las métricas MAE, RMSE y R², priorizando la minimización del error absoluto medio. También organizamos los registros, configuraciones y gráficos de los experimentos para facilitar su reproducibilidad.
 
-## Reproducibilidad
-Semilla 42, 15 trials por método/modelo de forma predeterminada. Para prueba rápida local: `N_TRIALS=2 jupyter nbconvert --to notebook --execute Sprint_IA07_Hiperparametros_Yarinacocha.ipynb --output prueba.ipynb`.
+Finalmente, este sprint nos permitió avanzar en el componente de aprendizaje automático de nuestro sistema híbrido. Los resultados corresponden a una evaluación experimental con datos simulados, mientras que la optimización de rutas mediante OR-Tools se desarrollará en una etapa posterior.
